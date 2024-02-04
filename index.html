@@ -14,13 +14,20 @@
 
         h1 {
             color: #333;
+            position: absolute;
+            left: 600px;
+            top: 40px;
         }
 
         form {
             max-width: 400px;
+            width: 600px;
             margin: 20px auto;
+            position: absolute;
+            top: 80px;
+            left: 500px;
             padding: 20px;
-            background-color: #fff;
+            background-color: #fbfafb;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -47,19 +54,30 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: green;
+        }
+        #course{
+            width: 400px;
+            height: 40px;
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
-    <h1>Fill The Form</h1>
+    <h1>Registration</h1>
     <form action="/submit" method="post">
         <label for="name">Name:</label>
         <input type="text" name="name" required><br>
         <label for="email">Email:</label>
         <input type="email" name="email" required><br>
         <label for="course">Course:</label>
-        <input type="text" name="course" required><br>
+        <select id="course" name="course">
+            <option value="Web Development ">Web Development</option>
+            <option value="Data Analytics">Data Analytics</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+            
+        </select><br><br>
         <button type="submit">Submit</button>
     </form>
 </body>
