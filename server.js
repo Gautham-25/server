@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// SQLite connection setup
+
 const db = new sqlite3.Database('mydatabase1.db', (err) => {
     if (err) {
         console.error('Error connecting to SQLite database:', err);
@@ -15,7 +15,7 @@ const db = new sqlite3.Database('mydatabase1.db', (err) => {
     }
     console.log('Connected to SQLite database');
     
-    // Create the users table if it doesn't exist (including the 'course' column)
+    
     db.run(`
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,27 +26,27 @@ const db = new sqlite3.Database('mydatabase1.db', (err) => {
     `);
 });
 
-// Handle form submissions
+
 app.post('/submit', (req, res) => {
     const { name, email, course } = req.body;
     const sql = 'INSERT INTO users (name, email, course) VALUES (?, ?, ?)';
     db.run(sql, [name, email, course], function (err) {
         if (err) {
             console.error('Error inserting data into the table:', err);
-            res.send('Error submitting form');
+            res.send('Error submitting ');
         } else {
             console.log(`Data inserted successfully with ID: ${this.lastID}`);
-            res.send('Form submitted successfully');
+            res.send('Registered successfully');
         }
     });
 });
 
-// Serve the HTML form
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
